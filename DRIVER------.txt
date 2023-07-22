@@ -1,0 +1,37 @@
+DRIVER------>>>>>>
+
+////// SIGNUP
+
+{
+    "user_id": "642967ba6bb82c8b2057f0c7",
+    "msg": "Signup completed"
+}
+
+////// VERIFY DRIVER
+
+-> by driver himself
+	- longitude & latitude + userID ("_id": "642967ba6bb82c8b2057f0c7")
+
+-> by admin
+	- admin will verify by sending driverID ("roleId": "6429695a6bb82c8b2057f0d2") in bearer token (admin)
+
+////// LOGIN
+
+{
+    "tokens": {
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQyOTY3YmE2YmI4MmM4YjIwNTdmMGM3IiwiaWF0IjoxNjgwNDM1NjM4LCJleHAiOjE2ODA0MzY4Mzh9.9TP6rD7r2RMHA5C5XlRg3imLz4PYrWjqrTpiI5tvBK4",
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQyOTY3YmE2YmI4MmM4YjIwNTdmMGM3IiwiaWF0IjoxNjgwNDM1NjM4fQ.86DlVIiOyzbYafxQK3axIyVAXwhE6JrDk3TCSsaVOFE"
+    },
+    "user": {
+        "_id": "642967ba6bb82c8b2057f0c7",
+        "username": "Ganesh",
+        "roleType": "DRIVER",
+        "phoneNum": 9876543210,
+        "address": "address123",
+        "isVerified": true,
+        "isActive": true,
+        "__v": 0,
+        "roleId": "6429695a6bb82c8b2057f0d2"
+    },
+    "msg": "Logged in successfully"
+}

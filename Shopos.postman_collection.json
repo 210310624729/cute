@@ -1,0 +1,1388 @@
+{
+	"info": {
+		"_postman_id": "d06ba7b9-e360-4076-8d06-9f7cba66c96d",
+		"name": "Shopos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24133582"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"bn\",\n    \"email\" : \"babita.namboori25@gmail.com\",\n    \"password\" : \"password\",\n    \"roleType\" : \"ADMIN\",\n    \"address\" : \"address1243\",\n    \"phoneNum\" : 12345678\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						},
+						"description": "Role types can be \"User\" , \"Customer\" , \"Admin\"\n\nEnsure that the phone number is pre verified. Email need not be verified as verification shall be done by the server using OTP."
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\" : \"636017c9f28b24667e69db85\",\r\n    \"otp\" : \"h1tlhs\",\r\n    \"licenseNum\" : \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup/verify?lat=12.975469439555104&long=77.59318521032073",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "12.975469439555104"
+								},
+								{
+									"key": "long",
+									"value": "77.59318521032073"
+								}
+							]
+						},
+						"description": "Verify Email by entering the OTP sent by mail. License number and Latitude Longitude must be passed as query if you are verifying a driver. This is needed to associate a driver to a particular service area where he can operate"
+					},
+					"response": []
+				},
+				{
+					"name": "Resend OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\" : \"6336f9e85d5b8fdce80d2c3d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/signup/resendotp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"signup",
+								"resendotp"
+							]
+						},
+						"description": "Resend OTP incase of failure to receive mail or OTP has expired (2 minutes)"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"ktcs.work@gmail.com\",\r\n    \"password\" : \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Returns access token and refresh token pair."
+					},
+					"response": []
+				},
+				{
+					"name": "Main Admin login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"hackerlife286@gmail.com\",\r\n    \"password\" : \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login",
+								"admin"
+							]
+						},
+						"description": "Returns access token and refresh token pair"
+					},
+					"response": []
+				},
+				{
+					"name": "new Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM0M2IxYTcxMTBhOTVjYWFlMjE1ODllIiwiaWF0IjoxNjY1MzgyMTI4fQ.46HuUO82ta2nTzaIo44Bkj3oZFpxIhovTN-2loiddRo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/auth/newtoken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"newtoken"
+							]
+						},
+						"description": "Used to refresh access token once it has expired (Every 20 minutes)\n\nServer responds with status code 401 and sub error Code 2\n\nSend refresh token as bearer token in authorization header"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM1YzFlYzQ5ZThhZTQ5N2VkMGJmNGUzIiwiaWF0IjoxNjY2OTgxNjA5LCJleHAiOjE2NjY5ODI4MDl9.iCD5boZsn-JxinBFmpkAB6sMcwcUPUGZVmjoLrLEKCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "Send refresh token as bearer token to logout"
+					},
+					"response": []
+				},
+				{
+					"name": "Get user info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMyNGJhZjFjYjkyMWU3M2U2NjNjNWI2IiwiaWF0IjoxNjYzNDMwMDM4LCJleHAiOjE2NjM0MzEyMzh9.TOELkp6jxo65UtxIC75VsTvwsImA3c502q3r8hJ4Sq0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/auth/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								""
+							]
+						},
+						"description": "Get the information about the current logged in user"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM1YzFlYzQ5ZThhZTQ5N2VkMGJmNGUzIiwiaWF0IjoxNjY3MzE2MjQ1LCJleHAiOjE2NjczMTc0NDV9.s3bdVudb_JaDjkgfYk9-aJckpv8ng47Yd10KHr6SLm4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\" : \"address\",\r\n    \"roleType\":\"DRIVER\",\r\n    \"phoneNum\" : 12345\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM1YzFiYTY5ZThhZTQ5N2VkMGJmNGFlIiwiaWF0IjoxNjY3NjcxNDk4LCJleHAiOjE2Njc2NzI2OTh9.mInZHHz0byE-ws-_Xx295I0nGzSoT3gnt3SI_EN05L4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/auth/deactivate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"deactivate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reactivate User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"mridulnamboori88000@gmail.com\",\r\n    \"password\" : \"password\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/reactivate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"reactivate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service area CRUD",
+			"item": [
+				{
+					"name": "Create Service area",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM1YzFiYTY5ZThhZTQ5N2VkMGJmNGFlIiwiaWF0IjoxNjY2OTgwODU5LCJleHAiOjE2NjY5ODIwNTl9.PAiQ8hxJT-MfX9drWN4ytTxzyapdDT6yrVCtwaFqFdk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"center\" : {\r\n        \"lat\" : 122.975469439555104, \r\n        \"long\" : 77.59318521032073\r\n    },\r\n    \"radius\" : 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/serviceareas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"serviceareas",
+								""
+							]
+						},
+						"description": "Authenticated User must be an Admin\n\nCenter is the position of the center of radius of the service area (geofence) and radius is radius in kilometers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get service areas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM1YzFiYTY5ZThhZTQ5N2VkMGJmNGFlIiwiaWF0IjoxNjY3MDU3Mzk3LCJleHAiOjE2NjcwNTg1OTd9.A0iyb4qhCNKRLqRxnj4IOIkiU5y7DHGyO1MCUSV0K00",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/serviceareas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"serviceareas",
+								""
+							]
+						},
+						"description": "Get all service areas created by currently logged in admin"
+					},
+					"response": []
+				},
+				{
+					"name": "update service area",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMyMWYwZmYyNjgxMjEyN2EzNzZiODdiIiwiaWF0IjoxNjYzMTY4ODY5LCJleHAiOjE2NjMxNzAwNjl9.ZB8ykvSEcScTDqQP853KO6fNNLgcmEAqLznQhcLfdQM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"radius\" : 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/serviceareas/:area_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"serviceareas",
+								":area_id"
+							],
+							"variable": [
+								{
+									"key": "area_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one service area",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMyMWYwZmYyNjgxMjEyN2EzNzZiODdiIiwiaWF0IjoxNjYzMTY4ODY5LCJleHAiOjE2NjMxNzAwNjl9.ZB8ykvSEcScTDqQP853KO6fNNLgcmEAqLznQhcLfdQM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/serviceareas/:area_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"serviceareas",
+								":area_id"
+							],
+							"variable": [
+								{
+									"key": "area_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "### **All the routes in this folder need access token as bearer token sent in the authorization header**"
+		},
+		{
+			"name": "Trips Info",
+			"item": [
+				{
+					"name": "Get all rides",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM1YzFlYzQ5ZThhZTQ5N2VkMGJmNGUzIiwiaWF0IjoxNjY3MDU2Mzg2LCJleHAiOjE2NjcwNTc1ODZ9.0wJCECQ7jtvDaorDPw7tSZkj5WM9A2-_9wzblFy_hHA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trips/info/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trips",
+								"info",
+								""
+							]
+						},
+						"description": "Get an array of all the rides taken by the User\n\nif trip Status is\n\nCANCELLED : Trip has been cancelled by the user\n\nWAITING FOR DRIVER : customer has created a trip and driver has not reached the pickup location\n\nSTARTED : Trip has been started (driver entered trip otp)\n\nCOMPLETED : The trip has been completed\n\nEvery trip has 2 sub trips with its own individual status and start and end locations:\n\n1st Sub trip is from drivers current location to pickup location\n\n2nd sub trip if from pickup location to drop location.\n\nThese sub trips can be used by the client to generate navigation routes on a map"
+					},
+					"response": []
+				},
+				{
+					"name": "Enquire trip",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM0NDUzYmI5NzQ1Mzk4NDUyZjNlY2VkIiwiaWF0IjoxNjY1NDIyMzM5LCJleHAiOjE2NjU0MjM1Mzl9.tgHOMV1q5THlFRUo0D5aioufUr6aKVLvxroey0NJKS8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trips/info/newtrip?pickupLat=12.929011244354362&dropLat=12.938613040658424&pickupLong=77.61740149280853&dropLong=77.63090403081868",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trips",
+								"info",
+								"newtrip"
+							],
+							"query": [
+								{
+									"key": "pickupLat",
+									"value": "12.929011244354362"
+								},
+								{
+									"key": "dropLat",
+									"value": "12.938613040658424"
+								},
+								{
+									"key": "pickupLong",
+									"value": "77.61740149280853"
+								},
+								{
+									"key": "dropLong",
+									"value": "77.63090403081868"
+								}
+							]
+						},
+						"description": "Returns the list of all available vehicles in a particular service area along with the cost of the trip for every vehicle."
+					},
+					"response": []
+				}
+			],
+			"description": "Routes needed to get information about a trip like price per vehicle etc"
+		},
+		{
+			"name": "ConfirmedTrip",
+			"item": [
+				{
+					"name": "Create trip",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMzNmZmMTM5Y2M2NjMxZDBiZjdlM2UzIiwiaWF0IjoxNjY1MTI5MjE4LCJleHAiOjE2NjUxMzA0MTh9.wI8GZw9S33IRDVEXLBWtWmisUVPVMvAtGb06n-lscBA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pickup\" : {\r\n        \"lat\" : 12.929011244354362, \r\n        \"long\" : 77.61740149280853\r\n    },\r\n    \"drop\" : {\r\n        \"lat\" : 12.938613040658424,\r\n        \"long\" : 77.63090403081868\r\n    },\r\n    \"serviceAreaId\" : \"633700099cc6631d0bf7e3f5\",\r\n    \"vehicleId\" : \"6337008f9cc6631d0bf7e3ff\",\r\n    \"price\" : 62.2683\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/trips/confirmed/newtrip",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trips",
+								"confirmed",
+								"newtrip"
+							]
+						},
+						"description": "The authenticated user must be a customer\n\nOnce the trip has been enquired using Enquire trip route, This route can be used to create a confirmed trip\n\nOnce this route succeeds, start web socket connection with websocket server for further communication.\n\n**Important : Do not send the cancellation fine along with the price. The cancellation fine will be added internally while creating a trip.**"
+					},
+					"response": []
+				},
+				{
+					"name": "Get rides",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMzNzAwZjQ5Y2M2NjMxZDBiZjdlNDEwIiwiaWF0IjoxNjY0NTQ5MjEyLCJleHAiOjE2NjQ1NTA0MTJ9.UyBh8wsmtMIRt-yCUSXtjzloeeYM3cvcENRXXHYWsOk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trips/confirmed/?lat=12.931307130863718&long=77.62934494833631",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trips",
+								"confirmed",
+								""
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "12.931307130863718"
+								},
+								{
+									"key": "long",
+									"value": "77.62934494833631"
+								}
+							]
+						},
+						"description": "A route for drivers to get all the rides with status \"WAITING FOR DRIVER\" in their particular service area. Takes current driver location as latitude and longitude"
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel trip",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMzNmZmMTM5Y2M2NjMxZDBiZjdlM2UzIiwiaWF0IjoxNjY0NTQ5MzgwLCJleHAiOjE2NjQ1NTA1ODB9.v0OJB0uf77u_xRBeuqW-Mc7NL4c6GwBA1Y2y1BJA5-Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/trips/confirmed/:trip_id/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trips",
+								"confirmed",
+								":trip_id",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "trip_id",
+									"value": null
+								}
+							]
+						},
+						"description": "Must be a customer to perform this action.\n\nCancels a trip and charges the customer the entire trip fees which has to be paid in 3 installments during the next 3 trips.\n\nNote: driver cant cancel the ride."
+					},
+					"response": []
+				},
+				{
+					"name": "Driver Accept Trip",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMzNzAwZjQ5Y2M2NjMxZDBiZjdlNDEwIiwiaWF0IjoxNjY0NTQ5MjEyLCJleHAiOjE2NjQ1NTA0MTJ9.UyBh8wsmtMIRt-yCUSXtjzloeeYM3cvcENRXXHYWsOk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trips/confirmed/accepttrip/:trip_id?lat=12.931307130863718&long=77.62934494833631",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trips",
+								"confirmed",
+								"accepttrip",
+								":trip_id"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "12.931307130863718"
+								},
+								{
+									"key": "long",
+									"value": "77.62934494833631"
+								}
+							],
+							"variable": [
+								{
+									"key": "trip_id",
+									"value": null
+								}
+							]
+						},
+						"description": "Lat and long are the positions of the driver.\n\nA trip once accepted cant be cancelled\n\nOnce this route has succeeded, The driver has to connect on websocket server. for further communication with customer."
+					},
+					"response": []
+				},
+				{
+					"name": "Driver Reached Pickup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMzNzAwZjQ5Y2M2NjMxZDBiZjdlNDEwIiwiaWF0IjoxNjY0NTQ5MjEyLCJleHAiOjE2NjQ1NTA0MTJ9.UyBh8wsmtMIRt-yCUSXtjzloeeYM3cvcENRXXHYWsOk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trips/confirmed/:trip_id/driveratpickup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trips",
+								"confirmed",
+								":trip_id",
+								"driveratpickup"
+							],
+							"variable": [
+								{
+									"key": "trip_id",
+									"value": null
+								}
+							]
+						},
+						"description": "Call this route when driver has reached the pickup location. This will notify the customer that the driver is at the pickup location. Via web socket"
+					},
+					"response": []
+				},
+				{
+					"name": "Start trip",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMzNzAwZjQ5Y2M2NjMxZDBiZjdlNDEwIiwiaWF0IjoxNjY0NTQ5MjEyLCJleHAiOjE2NjQ1NTA0MTJ9.UyBh8wsmtMIRt-yCUSXtjzloeeYM3cvcENRXXHYWsOk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\" : \"s6pl5m\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/trips/confirmed/:trip_id/start",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trips",
+								"confirmed",
+								":trip_id",
+								"start"
+							],
+							"variable": [
+								{
+									"key": "trip_id",
+									"value": null
+								}
+							]
+						},
+						"description": "Must be a driver to perform this action.\n\nStart the trip by Entering the OTP given to the driver by the customer"
+					},
+					"response": []
+				},
+				{
+					"name": "Driver ends Ride",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMzNzAwZjQ5Y2M2NjMxZDBiZjdlNDEwIiwiaWF0IjoxNjY0NTUwNTMzLCJleHAiOjE2NjQ1NTE3MzN9.GIHB7vM4DLxLSeL7uXWIOBo30OqQ8KUcfHfnb4sJ0V8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trips/confirmed/63370438909ef590b08db1ec/complete/driver?lat=12.93861304065000&long=77.63090403081000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trips",
+								"confirmed",
+								"63370438909ef590b08db1ec",
+								"complete",
+								"driver"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "12.93861304065000"
+								},
+								{
+									"key": "long",
+									"value": "77.63090403081000"
+								}
+							]
+						},
+						"description": "Called by driver to end the ride.\n\nLatitude and longitude is the current location of the driver. If the current location is over 100 m from drop location, trip cant be completed by driver and customer will be notified to complete the trip via websocket"
+					},
+					"response": []
+				}
+			],
+			"description": "**All the routes in this folder need access token as bearer token sent in the authorization header**"
+		},
+		{
+			"name": "Admin Functions",
+			"item": [
+				{
+					"name": "Get drivers in service area",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMzNmY5ZTg1ZDViOGZkY2U4MGQyYzNkIiwiaWF0IjoxNjY0NTQ4ODMzLCJleHAiOjE2NjQ1NTAwMzN9.5i7sIqZsYUwRST5yVmg46omd4w8GOHLO6lR8Mpl1KUg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/:service_area_id/getDrivers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								":service_area_id",
+								"getDrivers"
+							],
+							"variable": [
+								{
+									"key": "service_area_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify driver",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMzNmY5ZTg1ZDViOGZkY2U4MGQyYzNkIiwiaWF0IjoxNjY0NTQ4ODMzLCJleHAiOjE2NjQ1NTAwMzN9.5i7sIqZsYUwRST5yVmg46omd4w8GOHLO6lR8Mpl1KUg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/:driver_id/verify?action=VERIFY",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								":driver_id",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "VERIFY"
+								}
+							],
+							"variable": [
+								{
+									"key": "driver_id",
+									"value": null
+								}
+							]
+						},
+						"description": "query parameter action = VERIFY to verify the driver and REJECT to reject the driver"
+					},
+					"response": []
+				},
+				{
+					"name": "Ban driver",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMyNGI3MDYyZmRmMDE5Mzk2NDlhY2ViIiwiaWF0IjoxNjY0Mjg3NjY5LCJleHAiOjE2NjQyODg4Njl9.SkvcRx8ER8rxP68TAweDnULaLcY216XO0RDPTiDrXMc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/:driver_id/ban",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								":driver_id",
+								"ban"
+							],
+							"variable": [
+								{
+									"key": "driver_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove ban",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMyNGI3MDYyZmRmMDE5Mzk2NDlhY2ViIiwiaWF0IjoxNjY0Mjg3NjY5LCJleHAiOjE2NjQyODg4Njl9.SkvcRx8ER8rxP68TAweDnULaLcY216XO0RDPTiDrXMc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/633304b3e57451d93ffb65a3/removeban",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"633304b3e57451d93ffb65a3",
+								"removeban"
+							]
+						},
+						"description": "Driver must be verified once again after a ban has been removed"
+					},
+					"response": []
+				},
+				{
+					"name": "Create vehicle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM1YzFiYTY5ZThhZTQ5N2VkMGJmNGFlIiwiaWF0IjoxNjY3MjQxMzkzLCJleHAiOjE2NjcyNDI1OTN9.xe3J81TQREfMcrFzZrpKu0SMidlN1uK6BhLxPtO5mXM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Auto\",\r\n    \"price\" : 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/:area_id/vehicle/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								":area_id",
+								"vehicle",
+								""
+							],
+							"variable": [
+								{
+									"key": "area_id",
+									"value": "635c1c229e8ae497ed0bf4bc"
+								}
+							]
+						},
+						"description": "Create a vehicle under a service area"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All admins",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhbmVzaGRhZ2FkaTNAZ21haWwuY29tIiwiaWF0IjoxNjY1NDIyMDE5LCJleHAiOjE2NjU0MjMyMTl9.dHc9TWIlGLq1TgrCM0BlMYNrz1Ie4Q8urPnMSUOI8cM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/mainadmin/admins",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"mainadmin",
+								"admins"
+							]
+						},
+						"description": "Can be called only by request authenticated as main admin."
+					},
+					"response": []
+				},
+				{
+					"name": "Verify admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhY2tlcmxpZmUyODZAZ21haWwuY29tIiwiaWF0IjoxNjY3OTMwMDA1LCJleHAiOjE2Njc5MzEyMDV9.m0OBqLCD5jL04NzJHxPKGnhGUk-iqDbvXNpOLg73VLY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/mainadmin/:admin_id/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"mainadmin",
+								":admin_id",
+								"verify"
+							],
+							"variable": [
+								{
+									"key": "admin_id",
+									"value": "6360187cf28b24667e69db8f"
+								}
+							]
+						},
+						"description": "Verify an Admin so that they can start operating."
+					},
+					"response": []
+				},
+				{
+					"name": "Unverify",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhbmVzaGRhZ2FkaTNAZ21haWwuY29tIiwiaWF0IjoxNjY1NDIyMDE5LCJleHAiOjE2NjU0MjMyMTl9.dHc9TWIlGLq1TgrCM0BlMYNrz1Ie4Q8urPnMSUOI8cM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/mainadmin/:admin_id/unverify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"mainadmin",
+								":admin_id",
+								"unverify"
+							],
+							"variable": [
+								{
+									"key": "admin_id",
+									"value": "6343b1da110a95caae2158a1"
+								}
+							]
+						},
+						"description": "Unverify an Admin."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicle Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM1YzFlYzQ5ZThhZTQ5N2VkMGJmNGUzIiwiaWF0IjoxNjY3MjQxODQwLCJleHAiOjE2NjcyNDMwNDB9.dT-9Xe36g-mhN_MZxs9zFWawolGwoDygMxarkauAwuA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/vehicle/:vehicle_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"vehicle",
+								":vehicle_id"
+							],
+							"variable": [
+								{
+									"key": "vehicle_id",
+									"value": "636015fef28b24667e69db70"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Vehicle Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM2MDE3YzlmMjhiMjQ2NjdlNjlkYjg1IiwiaWF0IjoxNjY3MjQyMTEzLCJleHAiOjE2NjcyNDMzMTN9.Yj-4f3IC4ZqASEQs0Ao8USDSkvtv9XYEQuCXz9bwtK8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"NewAuto\",\r\n    \"price\" : 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/:serviceArea_id/vehicle/:vehicle_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								":serviceArea_id",
+								"vehicle",
+								":vehicle_id"
+							],
+							"variable": [
+								{
+									"key": "serviceArea_id",
+									"value": "635c1c229e8ae497ed0bf4bc"
+								},
+								{
+									"key": "vehicle_id",
+									"value": "636015fef28b24667e69db70"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vehicle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM1YzFiYTY5ZThhZTQ5N2VkMGJmNGFlIiwiaWF0IjoxNjY2OTgwODU5LCJleHAiOjE2NjY5ODIwNTl9.PAiQ8hxJT-MfX9drWN4ytTxzyapdDT6yrVCtwaFqFdk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/admin/:serviceArea_id/vehicle/:vehicle_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								":serviceArea_id",
+								"vehicle",
+								":vehicle_id"
+							],
+							"variable": [
+								{
+									"key": "serviceArea_id",
+									"value": "635c1c229e8ae497ed0bf4bc"
+								},
+								{
+									"key": "vehicle_id",
+									"value": "635c1d219e8ae497ed0bf4d7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**All routes require the access token to be sent as authorization header in the form of bearer token**\n\nAll these routes can be called only by user who is an admin."
+		},
+		{
+			"name": "Sockets",
+			"item": [],
+			"description": "Used to maintain communication between driver and customer.\n\nCommunicated the trip status and driver's live location to the customer.\n\nUse socket.io\n\nConnection:\n\nroute : `base_url/`\n\nquery parameters:\n\n`accessToken`: access token provided during login\n\nThe backend will automatically recognize you as a driver or customer based on the access token.\n\n## Customer events to listen\n\n| **Event name** | **description** |\n| --- | --- |\n| error | Internal server error. if sub error code is 1. reconnect using reconnection method as described below |\n| tripStatus | emitted Once trip has been accepted by driver. Live location of driver sent regularly. Listen to live location on `driverLocation` socket. Otp of trip is also passed |\n| driverLocation | Live location of the driver |\n| success | Success upon connection/reconnection |\n| driverAtPickup | Driver has reached pickup |\n| tripStarted | Trip has been started(after driver enters trip otp) |\n| confirmTripClose | If driver's location is 100m or greater from pickup location, driver cant cancel trip .Thus customer has to confirm trip close |\n| tripCompleted | Trip has been completed |\n\n## Driver events to listen\n\n| **Name** | **Description** |\n| --- | --- |\n| error | same as above |\n| success | same as above |\n| tripCompleted | same as above |\n\n## Driver events to emit\n\n| **Name** | **Description** |\n| --- | --- |\n| driverLocation | driver's current location in this format:  <br>`{lat : latLocation , long : longLocation}` |\n\n## Reconnection:\n\nIn case connection is broken/error is received with errCode = 1\n\nsend the following in query.\n\n| **Key** | **Value** |\n| --- | --- |\n| isReconnect | true |\n| previousId | previous socket id. Refer [socket.io](https://socket.io/docs/v3/client-socket-instance/#socketid) for reference |\n| role | CUSTOMER/DRIVER |"
+		}
+	]
+}

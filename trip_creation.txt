@@ -1,0 +1,24 @@
+// after creating a trip by a CUSTOMER
+
+{
+    "msg": "Trip has been created. Start websocket",
+    "trip": {
+        "pickup": {
+            "lat": 20.7696483,
+            "long": 70.9381879
+        },
+        "drop": {
+            "lat": 20.766447,
+            "long": 70.93934329999999
+        },
+        "customerId": "6429c49c37585c2ebb7f0153",
+        "status": "WAITING FOR DRIVER",
+        "price": 62.2683,
+        "serviceAreaId": "64287e8b3bb41e8ebc4fc889",
+        "vehicleId": "642b143c5c84c39f4a126d80",
+        "createdAt": "2023-04-05T20:32:19.468Z",
+        "_id": "642ddc9253b6a155331e7344",
+        "subTrips": [],
+        "__v": 0
+    }
+}

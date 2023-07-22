@@ -1,0 +1,17 @@
+{
+    "tokens": {
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQyODY4MGE4MDk0MmYwMGI5ZDlhNzg3IiwiaWF0IjoxNjgwMzczODY1LCJleHAiOjE2ODAzNzUwNjV9.-URemW87tWEZt5x_S3JJnU07aH2Bn3m-ymMQbNuCkqw",
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQyODY4MGE4MDk0MmYwMGI5ZDlhNzg3IiwiaWF0IjoxNjgwMzY5NzM1fQ.cr2Q247xWaZ20jTbzPl2JeSJsU8iZRnbX3uYgjomTPY"
+    },
+    "user": {
+        "_id": "6428680a80942f00b9d9a787",
+        "username": "diu_admin",
+        "roleType": "ADMIN",
+        "phoneNum": 1234567890,
+        "address": "diu",
+        "isVerified": true,
+        "isActive": true,
+        "__v": 0
+    },
+    "msg": "Logged in successfully"
+}

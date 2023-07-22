@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+   <style>
+    
+   </style>
+</head>
+
+<body>
+     <div class="navbar">
+          <div class="menu-button" onclick="toggleMobileMenu()">
+               &#9776;
+          </div>
+          <h1 style="padding-left: 0px;">Welcome</h1>
+     </div>
+
+   <div class="dashboard" style="margin-top:25px ;">
+      <div class="dashboard-card" style="background-color: rgba(93, 219, 93, 0.2);">
+         <h3>Success</h3>
+         <p class="request-count-success">100</p>
+      </div>
+      <div class="dashboard-card" style="background-color: rgba(214, 90, 90, 0.2);">
+         <h3>Failed</h3>
+         <p class="request-count-failed">20</p>
+      </div>
+      <div class="dashboard-card" style="background-color: rgba(184, 184, 89, 0.2);">
+         <h3>Pending</h3>
+         <p class="request-count-pending">50</p>
+      </div>
+   </div>
+<div>
+   <div class="table-section successchart"><h3>Success</h3>
+      <table>
+         <tr>
+            <th>Transaction ID</th>
+            <th>Status</th>
+            <th>Date</th>
+         </tr>
+         <tr>
+            <td>1</td>
+            <td>Success</td>
+            <td>2023-06-01</td>
+         </tr>
+         <tr>
+            <td>2</td>
+            <td>success</td>
+            <td>2023-06-02</td>
+         </tr>
+         <tr>
+            <td>3</td>
+            <td>success</td>
+            <td>2023-06-03</td>
+         </tr>
+      </table>
+   </div>
+
+   <div class="table-section  pendingchart" ><h3>Pending</h3>
+      <table>
+         <tr>
+            <th>Transaction ID</th>
+            <th>Status</th>
+            <th>Date</th>
+         </tr>
+         <tr>
+            <td>4</td>
+            <td>pending</td>
+            <td>2023-06-04</td>
+         </tr>
+         <tr>
+            <td>5</td>
+            <td>pending</td>
+            <td>2023-06-05</td>
+         </tr>
+         <tr>
+            <td>6</td>
+            <td>Pending</td>
+            <td>2023-06-06</td>
+         </tr>
+      </table>
+   </div>
+
+   <div class="table-section failedchart"><h3>Failed</h3>
+      <table>
+         <tr>
+            <th>Transaction ID</th>
+            <th>Status</th>
+            <th>Date</th>
+         </tr>
+         <tr>
+            <td>7</td>
+            <td>failed</td>
+            <td>2023-06-07</td>
+         </tr>
+         <tr>
+            <td>8</td>
+            <td>Failed</td>
+            <td>2023-06-08</td>
+         </tr>
+         <tr>
+            <td>9</td>
+            <td>failed</td>
+            <td>2023-06-09</td>
+         </tr>
+      </table>
+   </div>
+   </div>
+   <div class="mobile-menu" id="mobileMenu">
+          <div>
+               <h2 style="color: #ffffff; margin-top: 0%;font-size: 38px;font-weight: lighter;">Sub Admin</h2>
+          </div>
+          <ul class="options">
+               <li><a href="#">Add Service Area</a></li>
+               <li><a href="#">Verify Driver</a></li>
+               <li><a href="#">Add Vehicle</a></li>
+          </ul>
+     </div>
+
+     <div class="overlay" id="overlay"></div>
+
+     <script src="mobilemenu.js"></script>
+     
+
+   
+</body>
+
+</html>

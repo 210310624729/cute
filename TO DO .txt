@@ -1,0 +1,14 @@
+TO DO :
+
+after signup always -> verifyuser /auth/signup/verify
+
+
+
+
+DRIVERS ROLE ->
+- 
+
+ADMIN ROLE ->
+
+- CRUD drivers
+- CRUD service area
