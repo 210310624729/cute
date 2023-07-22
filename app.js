@@ -57,7 +57,11 @@ app.use((err , req , res , next)=>{
 
 app.all('*' , (req , res)=>{
     res.status(404).json({err : "Resource not found"})
-})
+});
+app.get("/", (req,res) => {
+    res.render("loginpage");
+});
+
 
 
 
